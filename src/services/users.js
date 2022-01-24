@@ -13,7 +13,7 @@ class Users{
 
     async createUser(data){
         const user = await UserModel.create(data)
-        return {user,success:true}
+        return {data:user,success:true,message:"Usuario creado exitosamente"}
     }
 }
 module.exports = Users

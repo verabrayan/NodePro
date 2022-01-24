@@ -3,6 +3,7 @@ const express = require('express')
 const { connection } = require("./config/db")
 
 const graphql = require('./routes/graphql')
+const products = require('./routes/products')
 const users = require('./routes/users')
 
 const app = express()
@@ -13,13 +14,17 @@ app.set("port",4000);
 //connection db
 connection().catch((err) => console.log(err));
 
+//middleware
+app.use(express.json())
+
+
 //routes
 graphql(app)
 users(app)
+products(app)
 
 
-//middleware
-app.use(express.json())
+
 
 
 app.get('/',(req,res)=>{
