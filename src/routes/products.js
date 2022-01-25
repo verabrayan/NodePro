@@ -13,7 +13,7 @@ function products(app){
 
     router.get('/:id',async(req,res)=>{
         const {id}= req.params
-        const product = await productServ.getProducts(email)
+        const product = await productServ.getProducts({id})
         return res.json(product)
     })
 
