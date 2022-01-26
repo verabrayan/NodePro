@@ -23,6 +23,7 @@ const root ={
     //     return await productServ.getByParams(args)
     // },
     users:userServices.getUsers,
+    updateUser:userServices.update,
     product:productServ.getProduct,
     products:productServ.getProducts,
     createProduct:productServ.createProduct,
@@ -38,10 +39,14 @@ input ProductInput{
     categories: [String],
     stock: Int
 }
+input UserInput{
+    role:String
+    name:String
+}
 type Query{
     hello: String
     me: User
-    users: [User]
+    users(role:String): [User]
     product(id:String,name:String,categories:[String]):Product
     products(name:String,categories:[String]): [Product]
 }
@@ -50,7 +55,8 @@ type Query{
         id: String,
         name: String,
         password: String,
-        email: String
+        email: String,
+        role: String
     }
     type Product{
         id: String,
@@ -61,6 +67,7 @@ type Query{
         stock: Int
     }
     type Mutation{
+        updateUser(id:String!,user:UserInput):User
         createProduct(product: ProductInput): Product
         updateProduct(id:String!, product: ProductInput): Product
     }

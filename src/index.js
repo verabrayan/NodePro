@@ -3,6 +3,7 @@ const express = require('express')
 const { connection } = require("./config/db")
 
 const graphql = require('./routes/graphql')
+const apollo = require('./routes/apollo')
 const products = require('./routes/products')
 const users = require('./routes/users')
 
@@ -19,7 +20,7 @@ app.use(express.json())
 
 
 //routes
-graphql(app)
+//graphql(app)
 users(app)
 products(app)
 

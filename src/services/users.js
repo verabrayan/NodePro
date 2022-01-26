@@ -6,14 +6,19 @@ class Users{
         return user
     }
 
-    async getUsers(){
-        const users = await UserModel.find()
+    async getUsers(query){
+        const users = await UserModel.find(query)
         return users
     }
 
     async createUser(data){
         const user = await UserModel.create(data)
         return {data:user,success:true,message:"Usuario creado exitosamente"}
+    }
+    async update(query){
+        // const user = UserModel(data)
+        // await user.save()
+        return await UserModel.findOneAndUpdate({_id:query.id},query.user,{new:true})
     }
 }
 module.exports = Users

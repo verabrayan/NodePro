@@ -32,7 +32,7 @@ class products{
 
     async update(query){
         // Reto corregir
-        return await productModel.findOneAndUpdate({id:query.id},query.product)
+        return await productModel.findOneAndUpdate({_id:query.id},query.product,{new:true})
         //return await ProductModel.findByIdAndUpdate(query.id,data.product)
     }
 }
